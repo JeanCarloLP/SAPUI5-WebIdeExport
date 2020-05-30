@@ -1,0 +1,12 @@
+<mvc:View displayBlock="true" controllerName="Fiori_Poc.MyWebIdeProject.controller.MasterDetail" height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:m="sap.m"
+	xmlns:u="sap.ui.unified">
+	<ObjectPageLayout id="idMasterDetailObjectPageLayout">
+		
+	</ObjectPageLayout>
+</mvc:View>

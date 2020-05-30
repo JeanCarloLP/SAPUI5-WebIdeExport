@@ -1,0 +1,12 @@
+{
+  "name": "MyWebIdeProject",
+  "version": "1.0.0",
+  "description": "Application to show how to deploy a simple application exported fron the SAP Web IDE to your favourite IDE and work i Local if that is the case. The configuration is the minimum to make it works, so beyond that you can set your own configuration as you need.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

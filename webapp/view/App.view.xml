@@ -1,0 +1,8 @@
+<mvc:View controllerName="Fiori_Poc.MyWebIdeProject.controller.App" 
+	displayBlock="true" height="100%"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+	<f:FlexibleColumnLayout id="App" stateChange="onStateChanged" layout="{/layout}" backgroundDesign="Solid">
+	</f:FlexibleColumnLayout>
+</mvc:View>

@@ -1,0 +1,153 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/set/here/your/uri/odata/Service/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"description": "{{appDescription}}",
+		"i18n": "i18n/i18n.properties",
+		"id": "Fiori_Poc.MyWebIdeProject",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"title": "{{appTitle}}",
+		"type": "application"
+	},
+	"sap.ui": {
+		"deviceTypes": {
+			"desktop": true,
+			"phone": true,
+			"tablet": true
+		},
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"supportedThemes": ["sap_belize_hcw", "sap_belize_hcb", "sap_belize", "sap_belize_plus", "sap_fiori_3", "sap_bluecrystal"],
+		"technology": "UI5"
+	},
+	"sap.ui5": {
+		"config": {
+			"fullWidth": true
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"dependencies": {
+			"libs": {
+				"sap.f": {},
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			},
+			"minUI5Version": "1.65.6"
+		},
+		"flexEnabled": true,
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "Fiori_Poc.MyWebIdeProject.i18n.i18n"
+				}
+			},
+			"mainOdataModel": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"useBatch": false
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"rootView": {
+			"async": true,
+			"id": "App",
+			"type": "XML",
+			"viewName": "Fiori_Poc.MyWebIdeProject.view.App"
+		},
+		"routing": {
+			"config": {
+				"async": true,
+				"bypassed": {
+					"target": "NotFound"
+				},
+				"controlId": "App",
+				"homeRoute": "master",
+				"routerClass": "sap.f.routing.Router",
+				"transition": "slide",
+				"viewPath": "Fiori_Poc.MyWebIdeProject.view",
+				"viewType": "XML"
+			},
+			"routes": [{
+				"name": "master",
+				"pattern": ":layout:",
+				"target": ["master"]
+			}, {
+				"name": "detail",
+				"pattern": "detail/{contract}/{room}/{layout}",
+				"target": ["detail"]
+			}, {
+				"name": "masterDetail",
+				"pattern": "masterDetail/{contract}/{room}/{list}/{item}/{layout}",
+				"target": ["detail", "masterDetail"]
+			}],
+			"targets": {
+				"master": {
+					"clearControlAggregation": false,
+					"controlAggregation": "beginColumnPages",
+					"transition": "slide",
+					"viewId": "Master",
+					"viewLevel": 1,
+					"viewName": "Master",
+					"viewType": "XML"
+				},
+				"detail": {
+					"clearControlAggregation": false,
+					"controlAggregation": "beginColumnPages",
+					"transition": "slide",
+					"viewId": "Detail",
+					"viewLevel": 2,
+					"viewName": "Detail",
+					"viewType": "XML"
+				},
+				"masterDetail": {
+					"clearControlAggregation": false,
+					"controlAggregation": "midColumnPages",
+					"transition": "slide",
+					"viewId": "MasterDetail",
+					"viewLevel": 3,
+					"viewName": "MasterDetail",
+					"viewType": "XML"
+				},
+				"NotFound": {
+					"clearControlAggregation": false,
+					"controlAggregation": "beginColumnPages",
+					"transition": "flip",
+					"viewId": "NotFound",
+					"viewName": "NotFound",
+					"viewType": "XML"
+				}
+			}
+		}
+	}
+}

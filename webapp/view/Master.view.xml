@@ -1,0 +1,130 @@
+<mvc:View displayBlock="true" controllerName="Fiori_Poc.MyWebIdeProject.controller.Master" height="100%"
+	xmlns:m="sap.m"
+	xmlns:f="sap.f"
+	xmlns:layout="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc">
+	<f:DynamicPage id="idMasterDynamicPage" toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:expandedHeading>
+					<!--<m:FlexBox id="idMFBLogo_1" wrap="Wrap" fitContainer="true">-->
+						<m:FlexBox id="idMFBLogo_2" alignItems="Center" class="sapUiTinyMarginEnd">
+							<m:Image id="idMVImageTitle" src="img/logo_small.png" width="100%" height="100%"/>
+						</m:FlexBox>
+						<!--<m:Title text="{i18n>MasterView.title}" id="idMasterViewTitle"/>
+					</m:FlexBox>-->
+				</f:expandedHeading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<layout:HorizontalLayout allowWrapping="true" id="idHeaderHL">
+					<layout:VerticalLayout id="idHeaderVL_1">
+						<m:FlexBox id="idMD__Header_FlexBox_1" wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox id="idMD__Header_FlexBox_2" wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<f:Avatar id="studentImage_1" src="" displaySize="S" displayShape="Square"/>
+							<m:Title id="idMD_FlexBox_2_Title" text="{rubriqueList>/Name}" wrapping="true" class="sapUiTinyMarginEnd marginSnappedHeading"/>
+						</m:FlexBox>
+					</m:FlexBox>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout class="sapUiMediumMarginEnd" id="idHeaderVL_2">
+						<m:ObjectAttribute id="idHTWorkerId" title="{i18n>MasterHeader.workerId}" text=""/>
+						<m:ObjectAttribute id="idHtworkerName" title="{i18n>MasterHeader.workerName}" text=""/>
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<!--<m:Table
+				id="idMasterTable"
+				inset="false"
+				items="{
+					path:'mainOdataModel>/Contracts',
+					parameters:{expand : 'Students'}
+				}"
+				class="sapFDynamicPageAlignContent"
+				width="auto">-->
+			<m:Table
+				id="idMasterTable"
+				inset="false"
+				items="{
+					path:'mainOdataModel>/Contracts',
+					parameters:{
+						expand : 'Students, Workers, Parents'
+					},
+					filters: [
+						{path: 'WorkerId', operator: 'EQ', value1: 'W0001'},
+						{path: 'CheckedOut', operator: 'EQ', value1: false}
+					]
+				}"
+				class="sapFDynamicPageAlignContent"
+				width="auto"
+				updateFinished="onDataReceived">
+				<m:headerToolbar>
+					<m:OverflowToolbar class="noPadding" id="idMasterHeaderToolbar">
+						<m:Title text="{i18n>MasterView.title}" id="idMasterViewTitle"/>
+						<m:ToolbarSpacer id="idMasterHeaderToolbarSpacer"/>
+						<m:SearchField id="idMasterRoomsSearchField" placeholder="{i18n>MasterView.searchField_1}" search="onSearchRooms" width="17rem"/>
+						<m:SearchField id="idMasterContractsSearchField" placeholder="{i18n>MasterView.searchField_2}" search="onSearchContracts" width="17rem"/>
+						<!--<m:OverflowToolbarButton id="idPdfButton" icon="sap-icon://pdf-attachment" type="Transparent" press="onPressPDF"/>-->
+						<m:OverflowToolbarButton id="idMasterHeaderSortButton" icon="sap-icon://sort" type="Transparent" press="onSort"/>
+					</m:OverflowToolbar>
+				</m:headerToolbar>
+				<m:columns>
+					<m:Column id="idMasterTableColumn_1" width="10%">
+						<m:Text id="idMasterTableColumn_1_Header" text="{i18n>MasterTable.column1}"/>
+					</m:Column>
+					<m:Column id="idMasterTableColumn_2" width="10%">
+						<m:Text id="idMasterTableColumn_2_Header" text="{i18n>MasterTable.column2}"/>
+					</m:Column>
+					<m:Column id="idMasterTableColumn_3" width="10%">
+						<m:Text id="idMasterTableColumn_3_Header" text="{i18n>MasterTable.column3}"/>
+					</m:Column>
+					<m:Column	id="idMasterTableColumn_4" width="10%">
+						<m:Text id="idMasterTableColumn_4_Header" text="{i18n>MasterTable.column4}" />
+					</m:Column>
+					<m:Column	id="idMasterTableColumn_5" width="10%">
+						<m:Text id="idMasterTableColumn_5_Header" text="{i18n>MasterTable.column5}" />
+					</m:Column>
+					<m:Column	id="idMasterTableColumn_6" width="10%">
+						<m:Text id="idMasterTableColumn_6_Header" text="{i18n>MasterTable.column6}" />
+					</m:Column>
+					<!--<m:Column	id="idMasterTableColumn_7" hAlign="End">
+						<m:Text id="idMasterTableColumn_7_Header" text="{i18n>MasterTable.column7}" />
+					</m:Column>-->
+				</m:columns>
+				<m:items>
+					<m:ColumnListItem id="idMasterColumnListItem" type="Navigation" press="onListItemPress">
+						<m:cells>
+							<m:ObjectIdentifier id="idMasterTableCol_1_Cells" title="{mainOdataModel>ContractId}" />
+							<m:ObjectIdentifier id="idMasterTableCol_2_Cells" title="{mainOdataModel>RoomId}" />
+							<m:ObjectIdentifier id="idMasterTableCol_3_Cells" title="{
+								path: 'mainOdataModel>InitialDate',
+							    type: 'sap.ui.model.type.Date',
+							    formatOptions: { 
+								    pattern: 'dd/MM/yyyy' 
+								 } 
+							}" />
+							<m:ObjectIdentifier id="idMasterTableCol_4_Cells" title="{
+								path: 'mainOdataModel>FinalDate',
+							    type: 'sap.ui.model.type.Date',
+							    formatOptions: { 
+								    pattern: 'dd/MM/yyyy' 
+								 } 
+							}" />
+							<!--<m:ObjectIdentifier id="idMasterTableCol_5_Cells" title="{mainOdataModel>WorkerId}" />-->
+							<!--<m:ObjectIdentifier id="idMasterTableCol_5_Cells" title="{mainOdataModel>Workers/FullName}" />-->
+							<m:ObjectIdentifier id="idMasterTableCol_5_Cells" title="{mainOdataModel>Parents/FullName}" />
+							<!--<m:ObjectIdentifier id="idMasterTableCol_6_Cells" title="{mainOdataModel>ParentId}" />-->
+							<!--<m:ObjectIdentifier id="idMasterTableCol_6_Cells" title="{mainOdataModel>Workers/Address}" />-->
+							<m:ObjectIdentifier id="idMasterTableCol_6_Cells" title="{mainOdataModel>Parents/Address}" />
+							<!--<m:ObjectIdentifier id="idMasterTableCol_7_Cells" title="{mainOdataModel>ActualStatus}" />-->
+						</m:cells>
+					</m:ColumnListItem>
+				</m:items>
+			</m:Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

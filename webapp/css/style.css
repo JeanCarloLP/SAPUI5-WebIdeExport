@@ -1,0 +1,52 @@
+.alignCheckBox {
+	margin-top: -8px !important;
+}
+
+.buttonRemoveImage span{
+	width: 32px;
+}
+
+.textColorBlue{
+	color: #0A6ED1 !important;
+	font-weight: bold !important;
+}
+
+.textColorGreen{
+	color: #4CAF50 !important;
+	font-weight: bold  !important;
+}
+
+.imageBorder {
+	border: 1px solid #89919a;
+}
+
+.mainDom {
+	height: 100%;
+}
+
+.marginLeft {
+	margin-left: 1rem !important;
+}
+
+.marginSnappedHeading {
+	margin: 0 0 0 1rem !important;
+}
+
+.noPadding {
+	padding: 0 !important;
+}
+
+.sapUxAPObjectPageSectionHeaderHidden {
+	margin-top: 1rem !important;
+    opacity: initial !important;
+    pointer-events: initial !important;
+    position: initial !important;
+}
+
+.sapMTextArea  .sapMInputBaseContentWrapper {
+	height: 95px;
+}
+
+.sapMObjectIdentifierText .sapMObjectIdentifierTextBellow {
+	    visibility: hidden;
+}
