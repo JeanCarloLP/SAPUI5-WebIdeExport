@@ -51,7 +51,7 @@ ui5 serve
 ```
 
 ### TIPS
-· rmemeber to have coppies
+· remember to have coppies
 
 · in case you dont want to add the core librarie you can set directly in the index the uri 
 ```ruby
