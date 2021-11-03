@@ -1,6 +1,6 @@
 # My Web IDE Project
 
-Application to show how to deploy a simple application exported fron the SAP Web IDE to your favourite IDE and work i Local if that is the case.
+Application to show how to deploy a simple application exported from the SAP Web IDE to your favourite IDE and work in Local if that is the case.
 The configuration is the minimum to make it works, so beyond that you can set your own configuration as you need.
 
 ## Requirements
